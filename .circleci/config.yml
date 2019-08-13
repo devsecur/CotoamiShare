@@ -13,6 +13,10 @@ jobs:
 #      - run:
 #         name: Chmod permissions #if permission for Gradlew Dependencies fail, use this.
 #         command: sudo chmod +x ./gradlew
+      - run: echo $ENCODED_KEYSTORE | base64 --decode >> ${HOME}/keystore.jks
+      - run: echo ‘export KEYSTORE=${HOME}/keystore.jks’ >> $BASH_ENV
+      - run: echo $DEPLOYMENT_PRIVATE_KEY | base64 --decode >> ${HOME}/deployment_private_key.json
+      - run: echo ‘export PRIVATE_KEY=${HOME}/deployment_private_key.json’ >> $BASH_ENV
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
@@ -28,4 +32,7 @@ jobs:
           destination: reports
       - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
           path: app/build/test-results
+      - run:
+          name: Upload to Google Play
+          command: ./gradlew publishRelease
       # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples
