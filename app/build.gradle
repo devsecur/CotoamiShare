@@ -62,11 +62,6 @@ play {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation project(':rankings')
-    implementation project(':prediction')
-    implementation project(':matches')
-    implementation project(':info')
-    implementation project(':common')
     kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
     kapt "androidx.room:room-compiler:$room_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
