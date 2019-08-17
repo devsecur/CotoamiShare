@@ -1,4 +1,4 @@
-package com.example.cotoamishare
+package de.cotoami.cotoamishare
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

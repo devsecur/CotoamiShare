@@ -1,4 +1,4 @@
-package com.example.cotoamishare
+package de.cotoami.cotoamishare
 
 import org.junit.Test
 
