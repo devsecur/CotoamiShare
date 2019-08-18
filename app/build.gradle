@@ -6,7 +6,7 @@ buildscript {
 
 ext {
   git = org.ajoberstar.grgit.Grgit.open()
-  gitVersionCode = git.tag.list().size()
+  gitVersionCode = git.commit.list().size()
   gitVersionName = "${git.describe()}"
 }
 
