@@ -14,7 +14,7 @@ plugins {
 ext {
   git = org.ajoberstar.grgit.Grgit.open()
   gitVersionCode = git.head().getTime()
-  gitVersionName = "${git.describe()}"
+  gitVersionName = git.head().abbreviatedId
 }
 
 android {
