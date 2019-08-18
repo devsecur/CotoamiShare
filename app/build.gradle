@@ -1,3 +1,9 @@
+buildscript {
+  dependencies {
+    classpath 'org.ajoberstar:grgit:1.4.+'
+  }
+}
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -5,11 +11,6 @@ plugins {
     id("com.github.triplet.play") version "2.3.0"
 }
 
-buildscript {
-  dependencies {
-    classpath 'org.ajoberstar:grgit:1.4.+'
-  }
-}
 ext {
   git = org.ajoberstar.grgit.Grgit.open()
   gitVersionCode = git.tag.list().size()
