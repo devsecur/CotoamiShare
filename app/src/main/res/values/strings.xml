@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Cotoami Share</string>
+    <string name="hello_cotoami">To share content on Cotoami, you first need to authorize. Therefore please copy the authorization link from your mail into the field below and save. Then you should be able to share content.</string>
 </resources>

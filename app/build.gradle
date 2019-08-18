@@ -35,6 +35,7 @@ android {
 }
 
 play {
+    track = "alpha"
     fromTrack = "alpha"
     serviceAccountCredentials = file(System.getenv("PRIVATE_KEY") ?: "private_key.json")
     defaultToAppBundles = true // Use App Bundle instead of APK
