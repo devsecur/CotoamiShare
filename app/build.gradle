@@ -4,17 +4,17 @@ buildscript {
   }
 }
 
-ext {
-  git = org.ajoberstar.grgit.Grgit.open()
-  gitVersionCode = git.head().getTime()
-  gitVersionName = "${git.describe()}"
-}
-
 plugins {
     id("com.android.application")
     id("kotlin-android")
     id("kotlin-android-extensions")
     id("com.github.triplet.play") version "2.3.0"
+}
+
+ext {
+  git = org.ajoberstar.grgit.Grgit.open()
+  gitVersionCode = git.head().getTime()
+  gitVersionName = "${git.describe()}"
 }
 
 android {
