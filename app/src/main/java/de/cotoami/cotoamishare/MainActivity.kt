@@ -2,6 +2,7 @@ package de.cotoami.cotoamishare
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -11,27 +12,29 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val sharedPreference = getSharedPreferences("Cotoami", Context.MODE_PRIVATE)
 
+        val cookie = sharedPreference.getString("cookie", "")
 
-        setContentView(R.layout.activity_main)
+        if (cookie == "") {
+            setContentView(R.layout.activity_main)
 
-        val submitButton = findViewById<Button>(R.id.button)
-        val inputUrl = findViewById<EditText>(R.id.editText)
+            val inputUrl = findViewById<EditText>(R.id.editText)
+            val submitButton = findViewById<Button>(R.id.button)
 
-        submitButton.setOnClickListener {
-            val sharedPreference =  getSharedPreferences("Cotoami", Context.MODE_PRIVATE)
-
-            var editor = sharedPreference.edit().also {
-                it.putString("url",inputUrl.text.toString())
-                it.apply()
+            submitButton.setOnClickListener {
+                Intent(this, ShowActivity::class.java).also {
+                    // start your next activity
+                    it.putExtra("url", inputUrl.text.toString())
+                    startActivity(it)
+                }
             }
-
-            val intent = Intent(this, ShowActivity::class.java).also {
-                // start your next activity
+        } else {
+            Intent(this, ShowActivity::class.java).also {
+                // start your next activity)
+                it.data = Uri.parse("https://cotoa.me")
                 startActivity(it)
             }
         }
     }
 }
-
-
